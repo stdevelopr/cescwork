@@ -3,7 +3,7 @@ Under construction...
 Collaborators are welcome.
 
 
-This is being built in Django.
+This is being built in Python 3.6.5 with Django.
 Learn it here: https://www.djangoproject.com/
 
 
