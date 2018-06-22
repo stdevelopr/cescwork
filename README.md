@@ -32,15 +32,15 @@ git clone https://github.com/stdevelopr/cescwork.git
 cd cescwork
 ```
 
-Install the requirements:
+- Install the requirements:
 ```
 pip install -r requirements.txt
 ````
-Construct the database:
+- Construct the database:
 ```
 python manage.py migrate
 ```
-Run the server
+- Run the server:
 ```
 python manage.py runserver
 ```
