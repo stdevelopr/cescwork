@@ -8,7 +8,15 @@
 
 </head>
 <body>
-	<div>HEADER</div>
+	<H3>CRYPTOESCUDO HEADER</H3>		
+		{%if user.is_authenticated %}
+		<h2>Hello {{user.username}}</h2>
+		{%else%}
+		<p>you are not logged in</p>
+		{%endif%}
+	<a href="{%url 'register'%}">Register</a>
+	<a href="{%url 'login'%}">Login</a>
+	<a href="{%url 'logout'%}?next={{request.path}}">Logout</a>
 	<hr>
 	<img src="{% static 'img/cesc.png' %}" alt="">
 	{%block page%}
@@ -16,7 +24,7 @@
 	{%endblock%}
 	<hr>
 
-	<div>FOOTER</div>
+	<h3>FOOTER</h3>
 	
 </body>
 </html>
