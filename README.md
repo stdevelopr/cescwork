@@ -1,7 +1,7 @@
 # CESCWORK
 Under construction...
 Collaborators are welcome.
-
+Verify the actual stage: http://stdevelopr.pythonanywhere.com/cescwork/
 
 This is being built in Python 3.6.5 with Django.
 Learn it here: https://www.djangoproject.com/
