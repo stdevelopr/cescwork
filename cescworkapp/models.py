@@ -26,7 +26,7 @@ class Work(models.Model):
 	price = models.IntegerField(default=6)
 	photo = models.FileField(upload_to='work')
 	status = models.BooleanField(default=True)
-	user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='User', null=True)
+	user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='User', null=True)
 	create_time = models.DateTimeField(default=timezone.now)
 
 	def __str__(self):
