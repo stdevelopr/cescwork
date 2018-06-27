@@ -9,7 +9,11 @@ def home(request):
 	return render(request, 'home.html', {"works":works})
 
 def work_detail(request, id):
-	return render(request, 'work_detail.html', {'id':id})
+	try:
+		work = Works.objects.get(id=id)
+	except Work.DoesNotExist:
+		return redirect('/')
+	return render(request, 'work_detail.html', {'work':work})
 
 def register(request):
 	if request.method == 'POST':
