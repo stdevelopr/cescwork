@@ -38,6 +38,7 @@ pip install -r requirements.txt
 ````
 - Construct the database:
 ```
+python manage.py makemigrations
 python manage.py migrate
 ```
 - Run the server:
