@@ -5,8 +5,8 @@ from .models import Work
 
 # Create your views here.
 def home(request):
-	works = Work.objects.filter(status=True)
-	return render(request, 'home.html', {"works":works})
+	work = Work.objects.filter(status=True)
+	return render(request, 'home.html', {"work":work})
 
 def work_detail(request, id):
 	try:
