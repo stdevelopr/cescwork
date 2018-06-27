@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
+from .models import Works
 
 # Create your views here.
 def home(request):
-	return render(request, 'home.html', {})
+	works = Works.objects.filter(status=True)
+	return render(request, 'home.html', {"works":works})
 
 def work_detail(request, id):
 	return render(request, 'work_detail.html', {'id':id})
