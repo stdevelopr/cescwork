@@ -11,7 +11,7 @@ class Profile(models.Model):
 	def __str__(self):
 		return self.user.username
 
-class Works(models.Model):
+class Work(models.Model):
 	CATEGORY_CHOICES = (
 		("GD", "Graphics & Design"),
 		("DM", "Digital % Marketing"),
@@ -24,7 +24,7 @@ class Works(models.Model):
 	category = models.CharField(max_length=2, choices=CATEGORY_CHOICES)
 	description=models.CharField(max_length=1000)
 	price = models.IntegerField(default=6)
-	photo = models.FileField(upload_to='worker')
+	photo = models.FileField(upload_to='work')
 	status = models.BooleanField(default=True)
 	user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='User', null=True)
 	create_time = models.DateTimeField(default=timezone.now)

@@ -1,16 +1,16 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
-from .models import Works
+from .models import Work
 
 # Create your views here.
 def home(request):
-	works = Works.objects.filter(status=True)
+	works = Work.objects.filter(status=True)
 	return render(request, 'home.html', {"works":works})
 
 def work_detail(request, id):
 	try:
-		work = Works.objects.get(id=id)
+		work = Work.objects.get(id=id)
 	except Work.DoesNotExist:
 		return redirect('/')
 	return render(request, 'work_detail.html', {'work':work})
