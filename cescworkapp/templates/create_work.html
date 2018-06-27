@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%block page%}
+	<div class="container bg-info text-center border " style="padding-top: 100px">
+	CREATE A WORK
+	{{error}}
+	<form action="" method="POST" enctype="multipart/form-data">
+		{%csrf_token%}
+		{{work_form}}
+		<button type="submit" name="button">Publish</button>
+	</form>
+</div>
+{%endblock%}

@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 from .models import Work
+from .forms import WorkForm
 
 # Create your views here.
 def home(request):
@@ -31,3 +33,25 @@ def register(request):
 	form = UserCreationForm()
 	context = {'form' :form}
 	return render(request, 'registration/register.html', context)
+
+@login_required(login_url='/')
+def create_work(request):
+	error = ''
+	if request.method=='POST':
+		work_form = WorkForm(request.POST, request.FILES)
+		if work_form.is_valid():
+			work = work_form.save(commit=False)
+			work.user = request.user
+			work.save()
+			return redirect('my_works')
+		else:
+			errors = "Data not valid"
+
+	work_form = WorkForm()
+	return render(request, 'create_work.html', {'work_form':work_form, 'error':error})
+
+@login_required(login_url='/')
+def my_works(request):
+	works = Work.objects.filter(user=request.user)
+	return render(request, 'my_works.html', {"works":works})
+
