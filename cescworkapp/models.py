@@ -17,7 +17,7 @@ class Work(models.Model):
 		("DM", "Digital % Marketing"),
 		("VA", "Video & Animation"),
 		("MA", "Music & Audio"),
-		("GD", "Programming & Tech")
+		("PT", "Programming & Tech")
 	)
 
 	title = models.CharField(max_length=500)

@@ -45,13 +45,31 @@ def create_work(request):
 			work.save()
 			return redirect('my_works')
 		else:
-			errors = "Data not valid"
+			error = "Data not valid"
 
 	work_form = WorkForm()
-	return render(request, 'create_work.html', {'work_form':work_form, 'error':error})
+	return render(request, 'create_work.html', {'error':error})
+
+
+@login_required(login_url='/')
+def edit_work(request, id):
+	try:
+		work= Work.objects.get(id=id, user=request.user)
+		error = ''
+		if request.method == 'POST':
+			work_form = WorkForm(request.POST, request.FILES, instance=work)
+			if work_form.is_valid():
+				work.save()
+				return redirect('my_works')
+			else:
+				error = 'Data is not valid'
+
+		return render(request, 'edit_work.html', {'work':work, 'error':error})
+	except Work.DoesNotExist:
+		return redirect ('/')
+
 
 @login_required(login_url='/')
 def my_works(request):
 	works = Work.objects.filter(user=request.user)
 	return render(request, 'my_works.html', {"works":works})
-

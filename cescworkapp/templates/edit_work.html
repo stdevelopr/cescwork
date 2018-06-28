@@ -20,18 +20,18 @@
 						Work Title
 					</label>
 					<div class="col-sm-10">
-						<textarea rows="3" class="form-control" name="title"></textarea>
+						<textarea rows="3" class="form-control" name="title">{{work.title}}</textarea>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Category</label>
 					<div class="col-sm-10">
-						<select name="category" class="form-control">
-							<option value="GD"> Graphics & Design</option>
-							<option value="DM"> Digital & Marketing</option>
-							<option value="VA"> Video & Animation</option>
-							<option value="MA"> Music & Audio </option>
-							<option value="PT"> Programming & Tech </option>
+						<select name="category" class="form-control" value="{{work.category}}">
+							<option {%if work.category == 'GD' %} selected {%endif%} value="GD"> Graphics & Design</option>
+							<option {%if work.category == 'DM' %} selected {%endif%} value="DM"> Digital & Marketing</option>
+							<option {%if work.category == 'VA' %} selected {%endif%} value="VA"> Video & Animation</option>
+							<option {%if work.category == 'MA' %} selected {%endif%} value="MA"> Music & Audio </option>
+							<option {%if work.category == 'PT' %} selected {%endif%} value="PT"> Programming & Tech </option>
 						</select>
 					</div>
 				</div>
@@ -40,7 +40,7 @@
 						Description
 					</label>
 					<div class="col-sm-10">
-						<textarea rows="5" class="form-control" name="description"></textarea>
+						<textarea rows="5" class="form-control" name="description">{{work.description}}</textarea>
 					</div>
 				</div>
 				<div class="form-group">
@@ -48,7 +48,7 @@
 						Price
 					</label>
 					<div class="col-sm-10">
-						<input type="number" class="form-control" value="15" name="price">
+						<input type="number" class="form-control" value="{{work.price}}" name="price">
 					</div>
 				</div>
 				<div class="form-group">
@@ -56,6 +56,7 @@
 						Photo
 					</label>
 					<div class="col-sm-10">
+						<small>Currently:{{work.photo}}</small>
 						<input type="file" class="form-control" name="photo">
 					</div>
 				</div>
@@ -66,15 +67,15 @@
 					</label>
 					<div class="col-sm-10">
 						<select name="status" class="form-control">
-							<option value="1">Active</option>
-							<option value="0">Disable</option>
+							<option value="1" {%if work.status %} selected {%endif%}>Active</option>
+							<option value="" {%if not work.status %} selected {%endif%}>Disable</option>
 						</select>
 					</div>
 				</div>
 
 				<div class="form-group">
 					<div class="col-sm-2-offset-2 col-sm-10">
-						<button type="submit" class="btn btn-success">Publish</button>
+						<button type="submit" class="btn btn-success">Update</button>
 					</div>
 				</div>
 			</form>

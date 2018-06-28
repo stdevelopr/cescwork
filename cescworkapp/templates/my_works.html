@@ -20,7 +20,7 @@
 		{%for work in works%}
 			<tr>
 				<td>{{forloop.counter}}</td>
-				<td>{{work.title}}</td>
+				<td><a href="{%url 'edit_work' work.id%}">{{work.title}}</a></td>
 				<td>{{work.price}}</td>
 				<td>{%if work.status%}Active {%else%}Disable{%endif%}</td>
 			</tr>
