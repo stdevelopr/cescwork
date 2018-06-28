@@ -49,11 +49,5 @@ python manage.py runserver
 Open on your browser:
 http://127.0.0.1:8000/
   
-To create works enter as admin:
-```
-python manage.py createsuperuser
-```
-Then type the created username and password in:
-http://127.0.0.1:8000/admin
 
-Create works, and see that on the main page...
+### Create a new user and publish your works.
